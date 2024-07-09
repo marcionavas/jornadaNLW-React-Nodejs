@@ -1,0 +1,5 @@
+# Ignore Java build artifacts
+/target/
+
+# Ignore IntelliJ IDEA-specific files (if using IntelliJ IDEA)
+*.iml

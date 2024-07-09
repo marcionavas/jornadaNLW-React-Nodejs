@@ -1,0 +1,5 @@
+# Ignore Vite-specific build artifacts
+/dist-frontend/
+
+# Ignore node_modules directory for frontend (if separate)
+frontend/node_modules/
