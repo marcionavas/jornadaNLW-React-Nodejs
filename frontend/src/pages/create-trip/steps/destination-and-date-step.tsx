@@ -9,14 +9,16 @@ interface DestinationAndDateStepProps {
     isGuestsInputOpen: boolean;
     closeGuestInput: () => void;
     openGuestsInput: () => void;
+    setDestination: (destination: string) => void;
+    eventStartAndEndDates: DateRange | undefined;
+    setEventStartAndEndDates: (dates: DateRange | undefined) => void
 }
 
 export function DestinationAndDateStep({
-    closeGuestInput, isGuestsInputOpen, openGuestsInput
+    closeGuestInput, isGuestsInputOpen, openGuestsInput, setDestination, setEventStartAndEndDates, eventStartAndEndDates
 }: DestinationAndDateStepProps) {
 
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
-    const [eventStartAndEndDates, setEventStartAndEndDates] = useState<DateRange | undefined>();
     const displayedDate = eventStartAndEndDates && eventStartAndEndDates.from && eventStartAndEndDates.to
         ? format(eventStartAndEndDates.from, "d ' de ' LLL").concat(' até ').concat(format(eventStartAndEndDates.to, "d ' de ' LLL"))
         : null
@@ -33,7 +35,7 @@ export function DestinationAndDateStep({
         <div className="h-16 bg-zinc-900 px-4 rounded-xl flex items-center shadow-shape gap-3">
             <div className="flex items-center gap-2 flex-1">
                 <MapPin className="size-5 text-zinc-400" />
-                <input disabled={isGuestsInputOpen} type="text" placeholder="Para onde você vai?" className="bg-transparent text-lg placeholder-bg-zinc-400 outline-none flex-1" />
+                <input onChange={event => setDestination(event.target.value)} disabled={isGuestsInputOpen} type="text" placeholder="Para onde você vai?" className="bg-transparent text-lg placeholder-bg-zinc-400 outline-none flex-1" />
             </div>
 
 
